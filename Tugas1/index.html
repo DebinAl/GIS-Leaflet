@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="script.js" defer></script>
+        <!-- Leaflet -->
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""
+        ></script>
+
+        <!-- tailwind costum css -->
+        <style type="text/tailwindcss">
+            @layer utilities {
+                .btn-primary {
+                    @apply px-7 py-2 bg-slate-200 rounded-lg 
+                    active:scale-90 hover:scale-105 transition ease-out duration-200;
+                }
+
+                .btn-active {
+                    @apply bg-green-500;
+                }
+                button:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+            }
+        </style>
+
+        <title>Tugas 1</title>
+    </head>
+
+    <body class="h-screen flex flex-col">
+        <header>
+            <nav class="flex h-24">
+                <!-- Icon -->
+                <section
+                    class="basis-2/3 bg-gradient-to-r from-slate-300 to-transparent flex items-center pl-16"
+                >
+                    <div class="flex items-center">
+                        <h1 class="text-3xl font-bold">GIS</h1>
+                        <img class="h-12" src="res/icon.png" alt="icon" />
+                    </div>
+                    <h1 class="text-2xl font-semibold mx-12">
+                        Devin Isan Aliano
+                    </h1>
+                </section>
+
+                <!-- navbar -->
+                <section
+                    class="basis-1/3 flex items-center justify-end pr-16 space-x-4"
+                >
+                    <button
+                        id="btn-marker"
+                        name="marker"
+                        class="btn-primary btn-active"
+                    >
+                        marker
+                    </button>
+                    <button
+                        id="btn-polyline"
+                        name="polyline"
+                        class="btn-primary"
+                    >
+                        polyline
+                    </button>
+                    <button id="btn-edit" name="edit" class="btn-primary">
+                        Edit
+                    </button>
+                </section>
+
+                <!-- edit option button -->
+                <section
+                    id="edit-option"
+                    class="hidden absolute top-28 right-16 space-x-4 z-[999] *:bg-slate-400 *:text-slate-50"
+                >
+                    <button id="btn-clear" name="clear" class="btn-primary">
+                        Clear
+                    </button>
+                    <button id="btn-cancel" name="cancel" class="btn-primary">
+                        Cancel
+                    </button>
+                    <button id="btn-save" name="save" class="btn-primary">
+                        Save
+                    </button>
+                </section>
+            </nav>
+        </header>
+        <main class="flex-1">
+            <div id="map" class="h-full"></div>
+        </main>
+    </body>
+</html>
