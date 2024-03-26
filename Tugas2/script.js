@@ -75,7 +75,7 @@ saveButton.addEventListener("click", function () {
     var lng = latLng.lng;
 
     uuids.push(uid);
-    addMarkerAttributes(points[points.length - 1], nama, alamat, lat, lng);
+    addMarkerAttributes(points[points.length - 1], latLng, nama, alamat);
     insertData(uid, nama, alamat, lat, lng);
     toggleCardPopup();
 });
@@ -119,10 +119,10 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
-function addMarkerAttributes(marker, position = null, nama = null, alamat = null, lat = null, lng = null) {
+function addMarkerAttributes(marker, position = null, nama = null, alamat = null) {
     if(position instanceof L.LatLng && position !== null){
-        this.lat = position.lat;
-        this.lng = position.lng;
+        var lat = position.lat;
+        var lng = position.lng;
     }
 
     marker.on("contextmenu", function () {
@@ -214,8 +214,8 @@ $.ajax({
 
 function readData(data) {
     data.forEach(row => {
-        var position = [row.latitude, row.longitude];
-        console.log(position);
+        var position = L.latLng(row.latitude, row.longitude);
+        // console.log(position);
 
         uuids.push(row.id);
         positions.push(position);
