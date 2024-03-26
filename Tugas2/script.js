@@ -140,7 +140,7 @@ function addMarkerAttributes(marker, position = null, nama = null, alamat = null
         .on('mouseout', function () {
             this.closePopup();
         })
-        on('click', function () {
+        .on('click', function () {
             editPoint();
         });
 }
