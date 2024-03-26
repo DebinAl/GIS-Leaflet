@@ -3,8 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tugas 2</title>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
-        <script src="script.js" defer></script>
+        <script type="module" src="script.js" defer></script>
         <!-- Leaflet -->
         <link
             rel="stylesheet"
@@ -26,17 +29,20 @@
                     active:scale-90 hover:scale-105 transition ease-out duration-200;
                 }
 
+                .btn-card {
+                    @apply rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+                }
+
                 .btn-active {
                     @apply bg-green-500;
                 }
+
                 button:disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
                 }
             }
         </style>
-
-        <title>Tugas 1</title>
     </head>
 
     <body class="h-screen flex flex-col">
@@ -86,15 +92,44 @@
                     <button id="btn-clear" name="clear" class="btn-primary">
                         Clear
                     </button>
-                    <button id="btn-cancel" name="cancel" class="btn-primary">
-                        Cancel
-                    </button>
-                    <button id="btn-save" name="save" class="btn-primary">
-                        Save
+                    <button id="btn-done" name="done" class="btn-primary">
+                        Done
                     </button>
                 </section>
             </nav>
         </header>
+
+        <section
+            id="card-popup"
+            class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-2/5 w-1/5 rounded-lg bg-slate-300 p-16 z-[450]"
+        >
+            <form action="">
+                <label for="nama" class="mb-2 block">Nama:</label>
+                <input
+                    id="input-nama"
+                    type="text"
+                    name="nama"
+                    class="mb-4 w-full rounded-md border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
+                />
+                <label for="alamat" class="mb-2 block">Alamat:</label>
+                <input
+                    id="input-alamat"
+                    type="text"
+                    name="alamat"
+                    class="mb-8 w-full rounded-md border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
+                />                
+            </form>
+
+            <div class="flex justify-center space-x-4">
+                <button id="btn-cancel" name="cancel" class="btn-card">
+                    Cancel
+                </button>
+                <button id="btn-save" name="save" class="btn-card">
+                    Save
+                </button>
+            </div>
+        </section>
+
         <main class="flex-1">
             <div id="map" class="h-full"></div>
         </main>
