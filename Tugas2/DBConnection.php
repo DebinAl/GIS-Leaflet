@@ -1,7 +1,7 @@
 <?php 
 
 function getConnection(): PDO {
-    $host = "gis_2105551107.local.net";
+    $host = "localhost";
     $port = 3306;
     $database = "db_2105551107";
     $username = "2105551107";
